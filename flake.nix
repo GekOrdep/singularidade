@@ -9,7 +9,7 @@
     };
   };
 
-  outputs = { nixpkgs-stable, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
