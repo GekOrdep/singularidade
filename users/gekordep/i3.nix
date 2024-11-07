@@ -32,24 +32,26 @@ in
         border = 0;
       };
 
-      bars = [{
-        position = "top";
-        mode = "dock";
-        colors = {
-          background = "#181c24";
-          focusedWorkspace = {
-            background = "#afafaf";
-            border = "#afafaf";
-            text = "#181c24";
-          };
-          inactiveWorkspace = {
-            background = "#181c24";
-            border = "#afafaf";
-            text = "#afafaf";
-          };
-        };
-        extraConfig = ''separator_symbol " / " '';
-      }];
+      bars = [
+      #  {
+      #  position = "top";
+      #  mode = "dock";
+      #  colors = {
+      #    background = "#181c24";
+      #    focusedWorkspace = {
+      #      background = "#afafaf";
+      #      border = "#afafaf";
+      #      text = "#181c24";
+      #    };
+      #    inactiveWorkspace = {
+      #      background = "#181c24";
+      #      border = "#afafaf";
+      #      text = "#afafaf";
+      #    };
+      #  };
+      #  extraConfig = ''separator_symbol " / " '';
+      #  }
+    ];
 
       keybindings = lib.mkOptionDefault {
         "${mod}+d" = "exec dmenu_run";
@@ -98,6 +100,13 @@ in
         "${mod}+Shift+c" = "reload";
         "${mod}+Shift+r" = "restart";
       };
+      startup = [
+        {
+          command = "systemctl --user restart polybar";
+          always = true;
+          notification = false;
+        }
+      ];
     };
   };
 }
