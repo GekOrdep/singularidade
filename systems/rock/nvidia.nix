@@ -25,7 +25,7 @@ in {
   systemd.services.systemd-udev-trigger.restartIfChanged = false;
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
     };
 

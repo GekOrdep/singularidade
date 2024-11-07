@@ -13,11 +13,12 @@
 
   # Bootloader.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  environment.sessionVariables.FLAKE = "${config.users.users.gekordep.home}/singularidade";
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "rock"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -50,7 +51,7 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.defaultSession = "none+i3";
+  services.displayManager.defaultSession = "none+i3";
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xterm.enable = false;
   
@@ -134,9 +135,12 @@
     libreoffice
     spotify
     jdk17
+    nh
+    yazi
   ];
-  
+
   programs.steam.enable = true;
+  
   
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
