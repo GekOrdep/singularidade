@@ -13,11 +13,16 @@
 
   # Bootloader.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.sessionVariables.FLAKE = "${config.users.users.gekordep.home}/singularidade";
+  environment.sessionVariables = {
+    FLAKE = "${config.users.users.gekordep.home}/singularidade";
+    EDITOR = "nvim";
+  };
+
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
+  programs.nano.enable = false;
   networking.hostName = "rock"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -54,7 +59,7 @@
   services.displayManager.defaultSession = "none+i3";
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xterm.enable = false;
-  
+
   services.xserver.windowManager.i3 = {
     enable = true;
     extraPackages = with pkgs; [
@@ -95,13 +100,15 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.fish.enable = true;
   users.users.gekordep = {
     isNormalUser = true;
     description = "Pedro Victor Rocha Camargo";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -114,52 +121,40 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    neovim
-    discord
-    heroic
-    btop
-    gimp
-    godot_4
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    appimage-run
     aseprite
     blender
-    vscode    
-    nodejs_22
+    btop
+    discord
+    gamemode
+    gimp
     git
-    appimage-run
+    godot_4
+    heroic
+    jdk17
+    libreoffice
     lutris
+    mpv
+    neovim
+    nh
+    nodejs_22
+    spotify
+    vscode
     wine
     winetricks
-    gamemode
-    libreoffice
-    spotify
-    jdk17
-    nh
     yazi
   ];
 
   programs.steam.enable = true;
-  
-  
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ ... ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

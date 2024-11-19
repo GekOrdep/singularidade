@@ -6,6 +6,7 @@ in
   home.packages = with pkgs; [
     xclip
     kitty
+    feh
   ];
   
   xsession.windowManager.i3 = {
@@ -103,6 +104,11 @@ in
       startup = [
         {
           command = "systemctl --user restart polybar";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "feh --bg-fill --randomize ~/singularidade/assets/wallpapers/*";
           always = true;
           notification = false;
         }
