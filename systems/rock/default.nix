@@ -149,6 +149,12 @@
 
   programs.steam.enable = true;
 
+
+  services.picom = {
+    enable = true;
+    vSync = true;
+  };
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
