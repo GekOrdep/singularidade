@@ -12,13 +12,32 @@
     username = "gekordep";
     homeDirectory = "/home/gekordep/";
     packages = with pkgs; [
-      prismlauncher
-      neovim
-      unzip
-      rofi
-      pywal
+      appimage-run
+      aseprite
+      blender
+      btop
       calc
+      discord
+      gamemode
+      gimp
+      git
+      godot_4
+      heroic
+      jdk17
+      libreoffice
+      lutris
+      neovim
       networkmanager_dmenu
+      nodejs_22
+      pavucontrol
+      prismlauncher
+      pywal
+      rofi
+      spotify
+      unzip
+      vscode
+      wine
+      winetricks
     ];
     sessionVariables = {
       EDITOR = "nvim";
