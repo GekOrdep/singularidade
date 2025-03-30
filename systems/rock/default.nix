@@ -18,6 +18,8 @@
     EDITOR = "nvim";
   };
 
+  virtualisation.docker.enable = true;
+
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
@@ -104,7 +106,7 @@
   users.users.gekordep = {
     isNormalUser = true;
     description = "Pedro Victor Rocha Camargo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
     packages = with pkgs; [
       kdePackages.kate
@@ -128,18 +130,23 @@
     blender
     btop
     discord
+    docker-compose
+    eclipses.eclipse-jee
     gamemode
     gimp
     git
     godot_4
+    haguichi
     heroic
-    jdk17
+    jdk21
     libreoffice
+    logmein-hamachi
     lutris
     mpv
     neovim
     nh
     nodejs_22
+    sqlite
     spotify
     vscode
     wine

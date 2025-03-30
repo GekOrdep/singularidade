@@ -19,20 +19,25 @@
       calc
       discord
       gamemode
+      gh
       gimp
       git
       godot_4
+      haguichi
       heroic
-      jdk17
+      jdk21
       libreoffice
+      logmein-hamachi
       lutris
       neovim
       networkmanager_dmenu
+      ngrok
       nodejs_22
       pavucontrol
       prismlauncher
       pywal
       rofi
+      sqlite
       spotify
       unzip
       vscode
